@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FitnessClubManagementSystem.Models.Slots>
+
+@{
+    ViewBag.Title = "BookingHistory";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<h2>BookingHistory</h2>
+
+@Html.Display("message")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.customerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clubId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.slotTimeID)
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clubId)
+            </td>
+            <td>
+                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.date))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.slotTimeID)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>

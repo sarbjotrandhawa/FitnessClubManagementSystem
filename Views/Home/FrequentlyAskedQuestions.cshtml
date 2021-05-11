@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "RequentlyAskedQuestions";
+}
+
+<!doctype html>
+<html>
+<head>
+    <title>FAQ</title>
+
+
+    <link href="@Url.Content("~/Styles/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <style>
+        .collapsible {
+            background-color: cornflowerblue;
+            color: black;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: lightgrey;
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Frequently Asked Questions</h2>
+    <p>Find Answers and general information in our FAQ section</p>
+
+    <button type="button" class="collapsible">Increased Cleaning</button>
+    <div class="content">
+        <p>We are abiding by a “constantly cleaning” mentality. High-touch points will be disinfected multiple times per day.</p>
+    </div>
+    <button type="button" class="collapsible">Hospital-Grade Cleaner</button>
+    <div class="content">
+        <p>All of our clubs will be disinfected daily with hospital-grade cleaner.</p>
+    </div>
+    <button type="button" class="collapsible">Protective Barriers</button>
+    <div class="content">
+        <p>Protective barriers have been installed on the front desk to limit any risks while interacting with staff.</p>
+    </div>
+    <button type="button" class="collapsible">Face Masks</button>
+    <div class="content">
+        <p>Staff are required to wear masks throughout their shift. Members must follow all mask protocols at the Club they are attending.</p>
+    </div>
+    <button type="button" class="collapsible">What should I have received with my Membership?</button>
+    <div class="content">
+        <ul>
+            <li>Membership card</li>
+            <li>Living the Good Life book</li>
+            <li>Gym bag</li>
+            <li>Starter Appointments</li>
+            <li>Fitness Schedule</li> 
+            <li>Access to the GoodLife App</li>
+        </ul>
+    </div>
+    <button type="button" class="collapsible">What do I bring/wear to the gym?</button>
+    <div class="content">
+
+        <p>Pack your gym bag with the following items to have a successful first visit and a great experience every time:</p>
+        <ul>
+            <li>A lock to keep your belongings safe (we recommend that you do not bring any items of value to the Club, if possible).</li>
+            <li>A workout towel to wipe down the equipment after use. Paper towels are also provided.</li>
+            <li>Gym bag</li>
+            <li>A water bottle</li>
+            <li>Fitness Schedule</li>
+            <li>Workout clothes & appropriate gym shoes.</li>
+        </ul>
+    </div>
+    <button type="button" class="collapsible">Online Booking</button>
+    <div class="content">
+        <p>
+            Members can book 75-minute workout time slots. Time slots are pre-scheduled and booking will be available up to 2 days in advance.
+            <b>*Final time slots on weekends will remain at 60 minutes.</b>
+        </p>
+    </div>
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,106 @@
+﻿@*@model IEnumerable<FitnessClubManagementSystem.Models.Event>*@
+@model PagedList.IPagedList<FitnessClubManagementSystem.Models.Event>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Events", FormMethod.Get))
+{
+    <p>
+        Search by Subject : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Subject)*@
+            Subject
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Description)*@
+            Description
+        </th>
+        <th>
+            @Html.ActionLink("Start", "Index", new { sortOrder = ViewBag.StartSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("End", "Index", new { sortOrder = ViewBag.EndSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
+        <th>
+            @*@Html.DisplayNameFor(model => model.ThemeColor)*@
+            ThemeColor
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IsFullDay)*@
+            IsFullDay
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThemeColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFullDay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    <div>
+        @Html.ActionLink("Reset", "Index")
+    </div>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>

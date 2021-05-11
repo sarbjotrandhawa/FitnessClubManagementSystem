@@ -1,0 +1,25 @@
+﻿@model FitnessClubManagementSystem.Models.Club
+@{
+    ViewBag.Title = "FindClub";
+}
+
+<h2>FindClub</h2>
+
+@using (Html.BeginForm("ClubDetail", "Clubs", FormMethod.Post))
+
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <label> Select a Province:  <span style="color:red;">*</span> </label>
+    <select name="SelectClub">
+
+        <option value="">Select</option>
+        <option value="ON">Ontario</option>
+        <option value="QB">Quebec</option>
+        <option value="BC">British Columbia</option>
+        <option value="NS">Nova Scotia</option>
+
+    </select>
+
+    <input id="Submit" type="submit" value="Search" />
+}
+

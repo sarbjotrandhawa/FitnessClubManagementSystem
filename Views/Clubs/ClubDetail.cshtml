@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FitnessClubManagementSystem.Models.Club>
+
+@{
+    ViewBag.Title = "ClubDetail";
+}
+
+<h2>ClubsDetail</h2>
+<h3>@ViewBag.Message</h3>
+<p>
+    @Html.ActionLink("Back", "FindClub","Clubs")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.clubStAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clubCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clubProvince)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clubPostal)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.clubStAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.clubCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.clubProvince)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.clubPostal)
+    </td>
+    <td>
+        @Html.ActionLink("Join Now", "Create", "Customers", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </td>
+</tr>
+}
+
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>

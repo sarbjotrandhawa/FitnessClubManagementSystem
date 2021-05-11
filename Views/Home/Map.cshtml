@@ -1,0 +1,81 @@
+﻿@*@model FitnessClubManagementSystem.Models.Club*@
+
+@{
+    ViewBag.Title = "Map";
+}
+
+<h2>Gym Locations Map in Canada</h2>
+
+<!DOCTYPE html>
+<!-- template from http://getbootstrap.com/getting-started -->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Google Maps example</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <style type="text/css">
+
+        #map_canvas {
+            height: 550px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+    var cities = @Html.Raw(Json.Encode(Model));
+	
+
+    $(document).ready(function() {
+        // execute
+        (function() {
+            // map options
+            var options = {
+                zoom: 11,
+                center: new google.maps.LatLng(43.6655256, -79.7307236),
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
+                mapTypeControl: false
+            };
+
+            // init map
+            var map = new google.maps.Map(document.getElementById('map_canvas'), options);
+
+
+            for (var i = 0; i < cities.length; i++) {
+                // init markers
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(cities[i].Lat, cities[i].Lng),
+                    map: map,
+                    title: cities[i].Title
+                });
+
+                // process multiple info windows
+                (function(marker, i) {
+                    // add click event
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow = new google.maps.InfoWindow({
+                            content: cities[i].Title
+                        });
+                        infowindow.open(map, marker);
+                    });
+                })(marker, i);
+            }
+        })();
+    });
+
+    </script>
+
+    <div id="map_canvas"></div>
+</body>
+</html>
+
+

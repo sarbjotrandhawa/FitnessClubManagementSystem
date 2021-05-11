@@ -1,0 +1,50 @@
+﻿@model FitnessClubManagementSystem.Models.Club
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Club</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.clubStAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubStAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clubCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clubProvince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubProvince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clubPostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubPostal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.clubId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

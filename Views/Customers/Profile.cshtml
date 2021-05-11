@@ -1,0 +1,58 @@
+﻿@model FitnessClubManagementSystem.Models.Customer
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<h2>Profile</h2>
+@Html.Display("confirm")
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateofbirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateofbirth)
+        </dd>
+
+    </dl>
+</div>
+

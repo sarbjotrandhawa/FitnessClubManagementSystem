@@ -1,0 +1,113 @@
+﻿@*@model IEnumerable<FitnessClubManagementSystem.Models.Customer>*@
+
+@model PagedList.IPagedList<FitnessClubManagementSystem.Models.Customer>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Customers Record";
+}
+<h2>Customers Record</h2>
+
+<p>
+    @Html.ActionLink("Add new Customer", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+{
+    <p>
+        Search by Name : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.customerNameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @*@Html.DisplayNameFor(model => model.customerName)*@
+        </th>
+        <th>
+            Password
+            @*@Html.DisplayNameFor(model => model.password)*@
+        </th>
+        <th>
+            Email
+            @*@Html.DisplayNameFor(model => model.customerEmail)*@
+        </th>
+        <th>
+            @Html.ActionLink("Phone", "Index", new { sortOrder = ViewBag.customerphoneSortParm, currentFilter = ViewBag.CurrentFilter })
+            @*@Html.DisplayNameFor(model => model.customerphone)*@
+        </th>
+        <th>
+            Customer Address
+            @*@Html.DisplayNameFor(model => model.customerAddress)*@
+        </th>
+        <th>
+            Date of Birth
+            @*@Html.DisplayNameFor(model => model.dateofbirth)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerphone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerAddress)
+            </td>
+            <td>
+                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.dateofbirth))
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.customerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.customerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.customerId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    <div>
+        @Html.ActionLink("Reset", "Index")
+    </div>
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
