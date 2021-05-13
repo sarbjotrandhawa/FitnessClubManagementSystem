@@ -3,6 +3,6 @@ Developed a System which enable fitness club owners to maintain their fitness cl
 Used Maps for showing position of gyms using google map API and Calender for showing events. 
 Implemented Searching, Sorting and Paging for easy access of data.
 Developed system in ASP.net used model first approach using entity framework.
-Extensively used HTML, CSS, JavaScript, Razor expressions for front end and C# and mysql for managing backend of application. 
+Extensively used HTML, CSS, JavaScript, Razor expressions for front end and C#, LINQ QUERY and mysql for managing backend of application. 
 Tool used: Visual Studio and SQL Server Management Studio for accessing mySql server.
 Server Used: IIS Express
